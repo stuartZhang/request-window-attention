@@ -1,5 +1,6 @@
 #![cfg_attr(debug_assertions, feature(trace_macros, log_syntax))]
 // https://stackoverflow.com/q/68313104/7202630
+// https://github.com/infinyon/node-bindgen#readme
 use ::std::{ffi::{c_char, c_uint, CString, OsString}, iter, mem, os::windows::ffi::OsStrExt};
 use ::winapi::{_core::ptr::null_mut, um::winuser::{FindWindowW, FlashWindowEx, FLASHWINFO, FLASHW_ALL}};
 
