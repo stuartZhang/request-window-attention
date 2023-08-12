@@ -4,6 +4,8 @@ version = "0.1.0"
 edition = "2021"
 license = "MIT"
 description = "在 windows 系统，根据窗体“标题名”闪烁窗体的任务栏图标来请求用户注意"
+repository = "https://github.com/stuartZhang/request-window-attention"
+exclude = ["nodejs"]
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [features]
