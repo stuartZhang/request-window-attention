@@ -88,6 +88,8 @@ const attention = require('./dist/v16.4.0/win-x64/request-window-attention.node'
 })();
 ```
 
+另外，你也可以直接在工程根目录下运行指令`node test.js`来执行测试。
+
 ## 兼容性说明
 
 ### 链接库
