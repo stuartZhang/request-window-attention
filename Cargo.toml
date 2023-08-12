@@ -4,8 +4,20 @@ version = "0.1.0"
 edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
+[features]
+nodejs = ["node-bindgen"]
+
+[[bin]]
+name = "request_window_attention_bin"
+path = "src/main.rs"
+
 [lib]
-crate-type = ["cdylib", "rlib"]
+crate-type = ["cdylib", "rlib", "staticlib"]
 
 [dependencies]
+node-bindgen = { version = "5.1", optional = true }
 winapi = {version = "0.3.9", features = ["winuser"] }
+
+[build-dependencies]
+node-bindgen = { version = "5.1", optional = true, features = ["build"] }
+cbindgen = "0.24.3"

@@ -1,0 +1,7 @@
+{
+    "rust-analyzer.runnables.command": "build.cmd",
+    "rust-analyzer.cargo.features": [
+        "nodejs"
+    ],
+    "rust-analyzer.procMacro.attributes.enable": true
+}
