@@ -9,23 +9,18 @@
         },
         "problemMatcher": {}
     }, {
-        "label": "build-dev",
-        "command": "build.cmd",
-        "args": [],
-        "presentation": {
-            "reveal": "always"
-        },
-        "group": {
-            "kind": "build",
-            "isDefault": true
-        },
-        "problemMatcher": {}
-    }, {
-        "label": "build-release",
+        "label": "build",
         "command": "build.cmd",
         "args": [
-            "--release"
+            "${input:vm_type}",
+            "${input:is_release}"
         ],
+        "options": {
+            "env": {
+                "RWA_NODE_NW_VERSION": "${input:vm_version}",
+                "RWA_WIN_ARCH": "${input:vm_arch}"
+            }
+        },
         "presentation": {
             "reveal": "always"
         },
@@ -48,5 +43,43 @@
             "isDefault": true
         },
         "problemMatcher": {}
+    }],
+    "inputs": [{
+        "type": "pickString",
+        "id": "vm_type",
+        "description": "请选择交叉编译目标",
+        "options": [
+          "nodejs",
+          "nw"
+        ],
+        "default": "nodejs"
+      }, {
+        "type": "pickString",
+        "id": "vm_version",
+        "description": "请选择 nodejs 或 nw 版本",
+        "options": [
+            "v16.4.0",
+            "v0.49.2"
+        ],
+        "default": "v16.4.0"
+    }, {
+        "type": "pickString",
+        "id": "vm_arch",
+        "description": "请选择 nodejs 或 nw 架构",
+        "options": [
+            "win-x86",
+            "win-x64",
+            "win-arm64"
+        ],
+        "default": "win-x64"
+    }, {
+        "type": "pickString",
+        "id": "is_release",
+        "description": "请选择输出包的模式",
+        "options": [
+            "",
+            "--release"
+        ],
+        "default": ""
     }]
 }

@@ -30,7 +30,7 @@
 2. 【链接库】输出格式会附增`C++`头文件，以描述链接库接口格式。
    1. 文件位置`target\<profile>\request-window-attention.h`
 3. `nodejs C addons`输出格式也会附增`.d.ts`类型说明文件，以给调用端提供基本的代码提示与参数作用解释。
-   1. 文件位置`dist\v16.4.0\win-x64\request-window-attention.d.ts`
+   1. 文件位置`dist\nodejs\v16.4.0\win-x64\request-window-attention.d.ts`
 
 因为文件篇幅不长，所以我将`C++`头文件和`.d.ts`类型说明文件的内容就直接贴到这里了
 
@@ -90,7 +90,7 @@ const attention = require('./dist/v16.4.0/win-x64/request-window-attention.node'
 
 另外，你也可以直接在工程根目录下运行指令`node test.js`来执行测试。
 
-## 兼容性说明
+## （预编译包）兼容性说明
 
 ### 链接库
 
@@ -102,6 +102,18 @@ const attention = require('./dist/v16.4.0/win-x64/request-window-attention.node'
 
 虽然预编译`.node`文件是基于`nodejs v16.4.0 win-x64`编译的，但理论上凡是遵循`N-API`标准接口的`C`插件对`nodejs`版本应该是无感的。
 
+### `node-webkit(nw) C addons`模块
+
+要求`nwjs 0.49.1+ win-x64`。已经自测不支持`x86`的`ia32`位`nw`。若必须支持，请下载代码自行交叉编译。
+
 ## 技术细节
 
 没啥技术，整个工程就仅只是`WIN32 COM ABI`的一个层“胶水”代码。
+
+### `nodejs / nw`交叉编译输出目录
+
+![image](https://github.com/stuartZhang/request-window-attention/assets/13935927/e985092e-2761-45a9-b65a-8dd889b4f76b)
+
+### 链接库编译输出目录
+
+![image](https://github.com/stuartZhang/request-window-attention/assets/13935927/ac48f74f-a6da-47c6-aaac-1f68341b0eb9)

@@ -2,15 +2,18 @@ use ::cbindgen::{Builder, Config};
 use ::std::{env, path::PathBuf};
 fn main(){
     let cargo_manifest_dir = env::var("CARGO_MANIFEST_DIR").expect("失败：环境变量`CARGO_MANIFEST_DIR`未提供");
-    #[cfg(all(feature = "nodejs", windows))]
-    link_node(cargo_manifest_dir.as_str().into());
+    #[cfg(any(feature = "nodejs", feature = "nw"))]
+    link_node_nw(cargo_manifest_dir.as_str().into());
     gen_c_header(&cargo_manifest_dir[..])
 }
-#[cfg(all(feature = "nodejs", windows))]
-fn link_node(mut cargo_manifest_dir: PathBuf){
+#[cfg(any(feature = "nodejs", feature = "nw"))]
+fn link_node_nw(mut cargo_manifest_dir: PathBuf){
     // 可参考 node_bindgen::build::configure(); 的源码
+    #[cfg(feature = "nodejs")]
     cargo_manifest_dir.push("nodejs");
-    cargo_manifest_dir.push(env::var("RWA_NODE_VERSION").expect("没有环境变量 RWA_NODE_VERSION"));
+    #[cfg(feature = "nw")]
+    cargo_manifest_dir.push("nw");
+    cargo_manifest_dir.push(env::var("RWA_NODE_NW_VERSION").expect("没有环境变量 RWA_NODE_NW_VERSION"));
     cargo_manifest_dir.push(env::var("RWA_WIN_ARCH").expect("没有环境变量 RWA_WIN_ARCH"));
     println!("cargo:rustc-link-lib=node");
     println!("cargo:rustc-link-search={}", cargo_manifest_dir.to_str().unwrap());

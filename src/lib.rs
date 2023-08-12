@@ -1,5 +1,5 @@
 #![cfg_attr(debug_assertions, feature(trace_macros, log_syntax))]
-#[cfg(feature = "nodejs")]
+#[cfg(any(feature = "nodejs", feature = "nw"))]
 use ::node_bindgen::derive::node_bindgen;
 use ::std::{ffi::{c_char, c_uint, CString, OsString}, iter, mem, os::windows::ffi::OsStrExt};
 use ::winapi::{_core::ptr::null_mut, um::winuser::{FindWindowW, FlashWindowEx, FLASHWINFO, FLASHW_CAPTION, FLASHW_TIMER, FLASHW_TIMERNOFG, FLASHW_STOP, FLASHW_TRAY}};
@@ -16,6 +16,7 @@ fn flash(win_title: OsString, action: u32, count: u32, blink_rate: u32){
     if hwnd.is_null() {
         return;
     }
+    #[cfg(debug_assertions)]
     dbg!(hwnd);
     let mut flash_info = FLASHWINFO {
         cbSize: mem::size_of::<FLASHWINFO>() as u32,
@@ -24,8 +25,9 @@ fn flash(win_title: OsString, action: u32, count: u32, blink_rate: u32){
         uCount: count,
         dwTimeout: blink_rate
     };
-    let result = unsafe { FlashWindowEx(&mut flash_info) };
-    dbg!(result);
+    let _result = unsafe { FlashWindowEx(&mut flash_info) };
+    #[cfg(debug_assertions)]
+    dbg!(_result);
 }
 // C
 /// 开始闪烁。
@@ -46,13 +48,13 @@ pub extern fn start_flash_c(win_title: *const c_char, count: c_uint, blink_rate:
     let win_title = unsafe { CString::from_raw(win_title as *mut i8) }.into_string().unwrap();
     start_flash(win_title.into(), count, blink_rate)
 }
-#[cfg_attr(feature = "nodejs", node_bindgen)]
-#[cfg(feature = "nodejs")]
+#[cfg_attr(any(feature = "nodejs", feature = "nw"), node_bindgen)]
+#[cfg(any(feature = "nodejs", feature = "nw"))]
 fn stop_flash_js(win_title: String) {
     stop_flash(win_title.into())
 }
-#[cfg_attr(feature = "nodejs", node_bindgen)]
-#[cfg(feature = "nodejs")]
+#[cfg_attr(any(feature = "nodejs", feature = "nw"), node_bindgen)]
+#[cfg(any(feature = "nodejs", feature = "nw"))]
 fn start_flash_js(win_title: String, count: u32, blink_rate: u32) {
     start_flash(win_title.into(), count, blink_rate)
 }
