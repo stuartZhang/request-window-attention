@@ -117,3 +117,11 @@ const attention = require('./dist/v16.4.0/win-x64/request-window-attention.node'
 ### 链接库编译输出目录
 
 ![image](https://github.com/stuartZhang/request-window-attention/assets/13935927/ac48f74f-a6da-47c6-aaac-1f68341b0eb9)
+
+### 编译整个工程
+
+`cd`至工程根目录和执行`win32 bat`脚本
+
+```bat
+build4publish.cmd
+```
