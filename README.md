@@ -12,7 +12,7 @@
 
 ## 动机
 
-自从[nwjs 40+](https://nwjs.io/)以后，闪烁电脑桌面任务栏图标的`js api`接口`win.requestAttention(attention)`就对`Windows`操作系统丧失了兼容性。哎！应用面最广的操作系统又一次不受待见可苦了我们这些做应用程序开发的码农了。
+自从[nwjs 40+](https://nwjs.io/)以后，闪烁电脑桌面任务栏图标的`js api`接口`win.requestAttention(attention)`就对`Windows`操作系统丧失了兼容性（和报错`Unchecked runtime.lastError: The context from which the function was called did not have an associated app window.`）。哎！应用面最广的操作系统又一次不受待见可苦了我们这些做应用程序开发的码农了。
 
 缺陷工单如预期般被提交。甲方爸爸可不管这是操作系统被嫌弃、容器自身缺陷、还是应用程序被躺枪的问题。反正，缺陷你得给我解决了。所以，只能想点儿“歪招”，绕过`nwjs`容器，从更底层的`WIN32 COM ABI`闪烁应用程序的桌面任务栏图标。
 
