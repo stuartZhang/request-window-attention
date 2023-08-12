@@ -48,10 +48,10 @@ extern "C" {
     /// @param winTitle 被闪烁窗体“标题名”
     /// @param blinkCount  闪烁次数。超过闪烁次数之后，任务栏会一直保持高亮状态。
     /// @param blinkRate   相邻闪烁的间隔时间（单位：毫秒）
-    void stopFlashC(const char *win_title);
+    void startFlashC(const char *win_title, unsigned int count, unsigned int blink_rate);
     /// 结束闪烁，但窗口任务栏还会继续高亮，直到窗体获得用户操作的焦点
     /// @param winTitle 被闪烁窗体“标题名”
-    void startFlashC(const char *win_title, unsigned int count, unsigned int blink_rate);
+    void stopFlashC(const char *win_title);
 } // extern "C"
 ```
 
