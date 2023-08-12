@@ -8,7 +8,7 @@
 
 从这里看，
 
-![图片](https://github.com/stuartZhang/request-window-attention/assets/13935927/b6cf11a8-47a0-4dc9-ae01-a8d66b224bc7)
+![图片](https://github-production-user-asset-6210df.s3.amazonaws.com/13935927/260208018-b585829c-d644-4ac0-9494-aee5bd51dc4b.png)
 
 ## 动机
 
