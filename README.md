@@ -96,7 +96,7 @@ const attention = require('./dist/v16.4.0/win-x64/request-window-attention.node'
 
 ### 链接库
 
-要求`Windows 7+ x64`。更低版本或`32`位的操作系统，我个人没有硬软件条件测试。所以，不知道能不能正常链接与运行。
+要求`Windows 7+ x64`。
 
 ### `nodejs C addons`模块
 
