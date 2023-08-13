@@ -1,5 +1,7 @@
 # request-window-attention (win-x64)
 
+主分支是针对`64`位操作系统的。若要支持`32`位操作系统，请切换至[ia32 分支](https://github.com/stuartZhang/request-window-attention/tree/ia32)。
+
 ## 功能
 
 根据`Windows`操作系统的`Native GUI`窗体**标题名**，寻址窗体句柄，闪烁窗体在桌面任务栏内的占位图标，以吸引计算机操作员的注意力。
