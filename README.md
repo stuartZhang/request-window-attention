@@ -128,3 +128,13 @@ const attention = require('./dist/v16.4.0/win-x64/request-window-attention.node'
 ```bat
 build4publish.cmd
 ```
+
+## 使用效果
+
+### `nodejs`调用场景
+
+![image](https://github.com/stuartZhang/request-window-attention/assets/13935927/3e82ac33-1d79-4228-9720-304f91cbf553)
+
+### `nwjs`调用场景
+
+![image](https://github.com/stuartZhang/request-window-attention/assets/13935927/83db5172-6fd8-4240-9804-70c5161deba4)
