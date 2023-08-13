@@ -1,4 +1,4 @@
-# request-window-attention
+# request-window-attention (win-x64)
 
 ## 功能
 
@@ -100,11 +100,11 @@ const attention = require('./dist/v16.4.0/win-x64/request-window-attention.node'
 
 要求`nodejs 10+ win-x64`，因为从`10`版本往上`nodejs`运行时才开始全面地支持`N-API`的`C`插件扩展接口。
 
-虽然预编译`.node`文件是基于`nodejs v16.4.0 win-x64`编译的，但理论上凡是遵循`N-API`标准接口的`C`插件对`nodejs`版本应该是无感的。
+虽然预编译`.node`文件是基于`nodejs v16.4.0`编译的，但理论上凡是遵循`N-API`标准接口的`C`插件对`nodejs`版本应该是无感的。
 
 ### `node-webkit(nw) C addons`模块
 
-要求`nwjs 0.49.1+ win-x64`。已经自测不支持`ia32`位`nw`。若必须支持，请下载代码自行交叉编译。
+要求`nwjs 0.49.2+ win-x64`。**强调：不支持`ia32`的`nw`。**
 
 ## 技术细节
 
@@ -123,5 +123,5 @@ const attention = require('./dist/v16.4.0/win-x64/request-window-attention.node'
 `cd`至工程根目录和执行`win32 bat`脚本
 
 ```bat
-build4publish-x64.cmd
+build4publish.cmd
 ```
