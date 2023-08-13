@@ -1,2 +1,4 @@
 /target
+/target-win-ia32
+/target-win-x64
 /dist
