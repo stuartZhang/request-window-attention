@@ -96,13 +96,13 @@ const attention = require('./dist/nodejs/v16.4.0/win-ia32/request-window-attenti
 
 ### 链接库
 
-要求`Windows 7+ x64`。更低版本或`32`位的操作系统，我个人没有硬软件条件测试。所以，不知道能不能正常链接与运行。
+要求`Windows 7+ x86`。
 
 ### `nodejs C addons`模块
 
 要求`nodejs 10+ win-x86`，因为从`10`版本往上`nodejs`运行时才开始全面地支持`N-API`的`C`插件扩展接口。
 
-虽然预编译`.node`文件是基于`nodejs v16.4.0 win-x64`编译的，但理论上凡是遵循`N-API`标准接口的`C`插件对`nodejs`版本应该是无感的。
+虽然预编译`.node`文件是基于`nodejs v16.4.0 win-x86`编译的，但理论上凡是遵循`N-API`标准接口的`C`插件对`nodejs`版本应该是无感的。
 
 ### `node-webkit(nw) C addons`模块
 
@@ -125,5 +125,5 @@ const attention = require('./dist/nodejs/v16.4.0/win-ia32/request-window-attenti
 `cd`至工程根目录和执行`win32 bat`脚本
 
 ```bat
-build4publish-x64.cmd
+build4publish.cmd
 ```
