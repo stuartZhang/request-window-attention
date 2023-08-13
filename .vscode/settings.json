@@ -1,4 +1,6 @@
 {
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true,
     "rust-analyzer.runnables.command": "build.cmd",
     "rust-analyzer.cargo.features": [
         "nodejs"
