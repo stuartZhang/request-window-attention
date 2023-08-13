@@ -1,4 +1,4 @@
-# request-window-attention
+# request-window-attention (x86/ia32)
 
 ## 功能
 
@@ -30,7 +30,7 @@
 2. 【链接库】输出格式会附增`C++`头文件，以描述链接库接口格式。
    1. 文件位置`target\<profile>\request-window-attention.h`
 3. `nodejs C addons`输出格式也会附增`.d.ts`类型说明文件，以给调用端提供基本的代码提示与参数作用解释。
-   1. 文件位置`dist\nodejs\v16.4.0\win-x64\request-window-attention.d.ts`
+   1. 文件位置`dist\nodejs\v16.4.0\win-ia32\request-window-attention.d.ts`
 
 因为文件篇幅不长，所以我将`C++`头文件和`.d.ts`类型说明文件的内容就直接贴到这里了
 
@@ -74,11 +74,11 @@ export function stopFlashJs(winTitle: string);
 
 ### `nwjs`调用端样例
 
-自测于`nodejs 10 / 12 /16 win-64`运行时环境
+自测于`nodejs 10 / 12 /16 win-x86`运行时环境
 
 ```javascript
 // 以`Commonjs Module`的形式，导入 C addons 插件
-const attention = require('./dist/v16.4.0/win-x64/request-window-attention.node');
+const attention = require('./dist/nodejs/v16.4.0/win-ia32/request-window-attention.node');
 (async () => {
     // 通知操作系统，开始闪烁桌面任务栏图标
     attention.startFlashJs('有道云笔记', 10, 500);
@@ -98,13 +98,13 @@ const attention = require('./dist/v16.4.0/win-x64/request-window-attention.node'
 
 ### `nodejs C addons`模块
 
-要求`nodejs 10+ win-x64`，因为从`10`版本往上`nodejs`运行时才开始全面地支持`N-API`的`C`插件扩展接口。
+要求`nodejs 10+ win-x86`，因为从`10`版本往上`nodejs`运行时才开始全面地支持`N-API`的`C`插件扩展接口。
 
 虽然预编译`.node`文件是基于`nodejs v16.4.0 win-x64`编译的，但理论上凡是遵循`N-API`标准接口的`C`插件对`nodejs`版本应该是无感的。
 
 ### `node-webkit(nw) C addons`模块
 
-要求`nwjs 0.49.1+ win-x64`。已经自测不支持`ia32`位`nw`。若必须支持，请下载代码自行交叉编译。
+要求`nwjs 0.49.1+ win-ia32`。**强调：不支持`x64`位`nw`。**
 
 ## 技术细节
 

@@ -18,7 +18,7 @@
         "options": {
             "env": {
                 "RWA_NODE_NW_VERSION": "${input:vm_version}",
-                "RWA_WIN_ARCH": "${input:vm_arch}"
+                "RWA_WIN_ARCH": "win-ia32"
             }
         },
         "presentation": {
@@ -45,7 +45,7 @@
         "problemMatcher": {}
     }, {
         "label": "build-all",
-        "command": "build4publish-x64.cmd",
+        "command": "build4publish.cmd",
         "presentation": {
             "reveal": "always"
         },
@@ -75,16 +75,6 @@
             "v0.72.0"
         ],
         "default": "v16.4.0"
-    }, {
-        "type": "pickString",
-        "id": "vm_arch",
-        "description": "请选择 nodejs 或 nw 架构",
-        "options": [
-            "win-ia32",
-            "win-x64",
-            "win-arm64"
-        ],
-        "default": "win-x64"
     }, {
         "type": "pickString",
         "id": "is_release",

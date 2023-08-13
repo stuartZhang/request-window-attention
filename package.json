@@ -17,12 +17,12 @@
         "flash",
         "taskbar"
     ],
-    "main": "dist/nodejs//v16.4.0/win-x64/request-window-attention.node",
-    "browser": "dist/nw/v0.54.1/win-x86/request-window-attention.node",
-    "module": "dist/nodejs/v16.4.0/win-x64/request-window-attention.node",
-    "jsnext:main": "dist/nodejs/v16.4.0/win-x64/request-window-attention.node",
-    "types": "dist/nodejs/v16.4.0/win-x64/request-window-attention.d.ts",
-    "typings": "dist/nodejs/v16.4.0/win-x64/request-window-attention.d.ts",
+    "main": "dist/nodejs//v16.4.0/win-ia32/request-window-attention.node",
+    "browser": "dist/nw/v0.54.1/win-ia32/request-window-attention.node",
+    "module": "dist/nodejs/v16.4.0/win-ia32/request-window-attention.node",
+    "jsnext:main": "dist/nodejs/v16.4.0/win-ia32/request-window-attention.node",
+    "types": "dist/nodejs/v16.4.0/win-ia32/request-window-attention.d.ts",
+    "typings": "dist/nodejs/v16.4.0/win-ia32/request-window-attention.d.ts",
     "files": [
         "dist"
     ],
