@@ -104,7 +104,7 @@ const attention = require('./dist/v16.4.0/win-x64/request-window-attention.node'
 
 ### `node-webkit(nw) C addons`模块
 
-要求`nwjs 0.49.1+ win-x64`。已经自测不支持`x86`的`ia32`位`nw`。若必须支持，请下载代码自行交叉编译。
+要求`nwjs 0.49.1+ win-x64`。已经自测不支持`ia32`位`nw`。若必须支持，请下载代码自行交叉编译。
 
 ## 技术细节
 
@@ -123,5 +123,5 @@ const attention = require('./dist/v16.4.0/win-x64/request-window-attention.node'
 `cd`至工程根目录和执行`win32 bat`脚本
 
 ```bat
-build4publish.cmd
+build4publish-x64.cmd
 ```

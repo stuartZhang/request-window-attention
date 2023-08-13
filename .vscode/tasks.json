@@ -43,6 +43,17 @@
             "isDefault": true
         },
         "problemMatcher": {}
+    }, {
+        "label": "build-all",
+        "command": "build4publish-x64.cmd",
+        "presentation": {
+            "reveal": "always"
+        },
+        "group": {
+            "kind": "build",
+            "isDefault": true
+        },
+        "problemMatcher": {}
     }],
     "inputs": [{
         "type": "pickString",
@@ -59,7 +70,9 @@
         "description": "请选择 nodejs 或 nw 版本",
         "options": [
             "v16.4.0",
-            "v0.49.2"
+            "v0.49.2",
+            "v0.54.1",
+            "v0.72.0"
         ],
         "default": "v16.4.0"
     }, {
@@ -67,7 +80,7 @@
         "id": "vm_arch",
         "description": "请选择 nodejs 或 nw 架构",
         "options": [
-            "win-x86",
+            "win-ia32",
             "win-x64",
             "win-arm64"
         ],

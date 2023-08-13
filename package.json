@@ -4,7 +4,7 @@
     "description": "在 windows 系统，根据窗体“标题名”闪烁窗体的任务栏图标来请求用户注意",
     "scripts": {
         "prepublishOnly": "npm run build",
-        "build": "build4publish.cmd"
+        "build": "build4publish-x64.cmd"
     },
     "repository": {
         "type": "git",
@@ -18,7 +18,7 @@
         "taskbar"
     ],
     "main": "dist/nodejs//v16.4.0/win-x64/request-window-attention.node",
-    "browser": "dist/nw/v0.49.2/win-x64/request-window-attention.node",
+    "browser": "dist/nw/v0.54.1/win-x86/request-window-attention.node",
     "module": "dist/nodejs/v16.4.0/win-x64/request-window-attention.node",
     "jsnext:main": "dist/nodejs/v16.4.0/win-x64/request-window-attention.node",
     "types": "dist/nodejs/v16.4.0/win-x64/request-window-attention.d.ts",
