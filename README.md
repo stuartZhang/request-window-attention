@@ -28,7 +28,7 @@
 
 1. 虽然工程编译也会输出机器码的【可执行文件】，但它仅被用来做测试用，和不接受任何的命令行参数。
 2. 【链接库】输出格式会附增`C++`头文件，以描述链接库接口格式。
-   1. 文件位置`target\<profile>\request-window-attention.h`
+   1. 文件位置`target-win-x64\<profile>\request-window-attention.h`
 3. `nodejs C addons`输出格式也会附增`.d.ts`类型说明文件，以给调用端提供基本的代码提示与参数作用解释。
    1. 文件位置`dist\nodejs\v16.4.0\win-x64\request-window-attention.d.ts`
 
