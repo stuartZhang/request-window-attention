@@ -17,7 +17,7 @@ if "%~1"=="run" (
         mkdir %RWA_DIST_DIR%
     )
     echo ***********************************************
-    echo *** Compilation for %~1 - %RWA_NODE_NW_VERSION% - %RWA_WIN_ARCH% ***
+    echo *** Compilation for %~1 - %RWA_NODE_NW_VERSION% - %RWA_WIN_ARCH% ****
     echo ***********************************************
     nj-cli build --out=%RWA_DIST_DIR% %~2 -- --features=%~1
     move /y %RWA_DIST_DIR%\index.node %RWA_DIST_DIR%\%RWA_PKG_NAME%.node

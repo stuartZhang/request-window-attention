@@ -93,6 +93,14 @@ const attention = require('./dist/v16.4.0/win-x64/request-window-attention.node'
 
 另外，你也可以直接在工程根目录下运行指令`node test.js`来执行测试。
 
+### 安装
+
+在普通`nodejs x64`平台（而不是`nwjs`），支持`npm`安装
+
+```shell
+npm i request-window-attention
+```
+
 ## （预编译包）兼容性说明
 
 ### 链接库
