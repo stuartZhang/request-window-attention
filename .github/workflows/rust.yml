@@ -1,0 +1,20 @@
+name: Rust
+
+on:
+  push:
+    branches: [ "x64_ia32" ]
+  pull_request:
+    branches: [ "x64_ia32" ]
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build:
+
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build
+      run: build4publish.cmd
