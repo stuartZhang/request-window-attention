@@ -1,6 +1,4 @@
-# request-window-attention (win-x64)
-
-主分支是针对`64`位操作系统的。若要支持`32`位操作系统，请切换至[ia32 分支](https://github.com/stuartZhang/request-window-attention/tree/ia32)。
+# request-window-attention
 
 ## 功能
 
@@ -95,27 +93,32 @@ const attention = require('./dist/v16.4.0/win-x64/request-window-attention.node'
 
 ### 安装
 
-在普通`nodejs x64`平台（而不是`nwjs`），支持`npm`安装
-
 ```shell
 npm i request-window-attention
 ```
+
+### 导入被安装的`request-window-attention`模块
+
+* 在`nodejs x64`环境，`require('request-window-attention')`。
+* 在`nodejs x86/ia32`环境，`require('request-window-attention/dist/nodejs/v16.4.0/win-ia32/request-window-attention.node')`。
+* 在`nwjs x64`容器内，`require('request-window-attention/dist/nw/v0.54.1/win-x64/request-window-attention.node')`。
+* 在`nwjs ia32`容器内，`require('request-window-attention/dist/nw/v0.54.1/win-ia32/request-window-attention.node')`。
 
 ## （预编译包）兼容性说明
 
 ### 链接库
 
-要求`Windows 7+ x64`。
+要求`Windows 7+`。
 
 ### `nodejs C addons`模块
 
-要求`nodejs 10+ win-x64`，因为从`10`版本往上`nodejs`运行时才开始全面地支持`N-API`的`C`插件扩展接口。
+要求`nodejs 10+`，因为从`10`版本往上`nodejs`运行时才开始全面地支持`N-API`的`C`插件扩展接口。
 
 虽然预编译`.node`文件是基于`nodejs v16.4.0`编译的，但理论上凡是遵循`N-API`标准接口的`C`插件对`nodejs`版本应该是无感的。
 
 ### `node-webkit(nw) C addons`模块
 
-要求`nwjs 0.49.2+ win-x64`。**强调：不支持`ia32`的`nw`。**
+要求`nwjs 0.49.2+`。
 
 ## 技术细节
 
