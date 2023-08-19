@@ -1,6 +1,6 @@
 {
     "name": "request-window-attention",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "description": "在 windows 系统，根据窗体“标题名”闪烁窗体的任务栏图标来请求用户注意",
     "scripts": {
         "prepublishOnly": "npm run build",
@@ -17,12 +17,12 @@
         "flash",
         "taskbar"
     ],
-    "main": "dist/nodejs//v16.4.0/win-x64/request-window-attention.node",
-    "browser": "dist/nw/v0.54.1/win-x64/request-window-attention.node",
-    "module": "dist/nodejs/v16.4.0/win-x64/request-window-attention.node",
-    "jsnext:main": "dist/nodejs/v16.4.0/win-x64/request-window-attention.node",
-    "types": "dist/nodejs/v16.4.0/win-x64/request-window-attention.d.ts",
-    "typings": "dist/nodejs/v16.4.0/win-x64/request-window-attention.d.ts",
+    "main": "dist/nodejs/win-x64/request-window-attention.node",
+    "browser": "dist/nw/win-x64/request-window-attention.node",
+    "module": "dist/nodejs/win-x64/request-window-attention.node",
+    "jsnext:main": "dist/nodejs/win-x64/request-window-attention.node",
+    "types": "dist/nodejs/win-x64/request-window-attention.d.ts",
+    "typings": "dist/nodejs/win-x64/request-window-attention.d.ts",
     "files": [
         "dist"
     ],

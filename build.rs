@@ -10,10 +10,15 @@ fn main(){
 fn link_node_nw(mut cargo_manifest_dir: PathBuf){
     // 可参考 node_bindgen::build::configure(); 的源码
     #[cfg(feature = "nodejs")]
-    cargo_manifest_dir.push("nodejs");
+    {
+        cargo_manifest_dir.push("nodejs");
+        cargo_manifest_dir.push("v16.4.0");
+    }
     #[cfg(feature = "nw")]
-    cargo_manifest_dir.push("nw");
-    cargo_manifest_dir.push(env::var("RWA_NODE_NW_VERSION").expect("没有环境变量 RWA_NODE_NW_VERSION"));
+    {
+        cargo_manifest_dir.push("nw");
+        cargo_manifest_dir.push("v0.54.1");
+    }
     cargo_manifest_dir.push(env::var("RWA_WIN_ARCH").expect("没有环境变量 RWA_WIN_ARCH"));
     println!("cargo:rustc-link-lib=node");
     println!("cargo:rustc-link-search={}", cargo_manifest_dir.to_str().unwrap());

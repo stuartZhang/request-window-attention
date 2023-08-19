@@ -1,4 +1,14 @@
 /**
+ * 模块版本信息
+ */
+export interface GitEdition {
+    branch: string;
+    tag: string;
+    latestCommitId: string;
+    pkgName: string;
+    pkgVersion: string;
+}
+/**
  * 开始闪烁。
  * （1）在 stopFlashJs() 接口被调用后，闪烁会停止但高亮会继续。
  * （2）在窗体获得了焦点之后，闪烁与高亮才都会结束。
@@ -12,3 +22,8 @@ export function startFlashJs(winTitle: string, blinkCount: number, blinkRate: nu
  * @param winTitle 被闪烁窗体“标题名”
  */
 export function stopFlashJs(winTitle: string);
+/**
+ * 模块版本信息
+ * @returns GitEdition
+ */
+export function getEdition(): GitEdition;

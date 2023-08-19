@@ -1,6 +1,6 @@
 [package]
 name = "request-window-attention"
-version = "0.1.1"
+version = "0.1.2"
 edition = "2021"
 license = "MIT"
 description = "在 windows 系统，根据窗体“标题名”闪烁窗体的任务栏图标来请求用户注意"
@@ -21,7 +21,7 @@ crate-type = ["cdylib", "rlib", "staticlib"]
 
 [dependencies]
 node-bindgen = { version = "5.1", optional = true }
-winapi = {version = "0.3.9", features = ["winuser"] }
+winapi = { version = "0.3.9", features = ["winuser"] }
 
 [build-dependencies]
 node-bindgen = { version = "5.1", optional = true, features = ["build"] }
