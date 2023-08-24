@@ -2,8 +2,8 @@
 mod git_edition;
 mod enum_windows;
 #[cfg(any(feature = "nodejs", feature = "nw"))]
-use ::node_bindgen::{core::{JSValue, NjError, val::{JsCallback, JsCallbackFunction, JsEnv, JsObject}}, derive::node_bindgen, init::node_bindgen_init_once, sys::{napi_callback_info, napi_value}};
-use ::std::{cell::RefCell, ffi::{c_char, c_uint, CString, OsString}, iter, mem, os::windows::ffi::OsStrExt};
+use ::node_bindgen::{core::val::JsCallbackFunction, derive::node_bindgen, init::node_bindgen_init_once};
+use ::std::{ffi::{c_char, c_uint, CString, OsString}, iter, mem, os::windows::ffi::OsStrExt};
 use ::winapi::{_core::ptr::null_mut, um::winuser::{FindWindowW, FlashWindowEx, FLASHWINFO, FLASHW_CAPTION, FLASHW_TIMER, FLASHW_TIMERNOFG, FLASHW_STOP, FLASHW_TRAY}, shared::windef::HWND};
 pub use git_edition::GitEdition;
 // ----------------------------------------------------------------------
