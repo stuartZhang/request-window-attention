@@ -7,6 +7,7 @@ export interface GitEdition {
     latestCommitId: string;
     pkgName: string;
     pkgVersion: string;
+    bundleDateTime: string;
 }
 export interface Logger {
     (text: string): void;

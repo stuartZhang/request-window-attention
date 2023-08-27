@@ -1,10 +1,13 @@
 use ::cbindgen::{Builder, Config};
+use ::chrono::offset::Local;
 use ::std::{env, path::PathBuf};
 fn main(){
     let cargo_manifest_dir = env::var("CARGO_MANIFEST_DIR").expect("失败：环境变量`CARGO_MANIFEST_DIR`未提供");
+    let now = Local::now();
+    println!("cargo:rustc-env=DISTRIBUTION_DATE_TIME={}", now.format("%Y年%m月%d日 %A %H时%M分"));
     #[cfg(any(feature = "nodejs", feature = "nw"))]
     link_node_nw(cargo_manifest_dir.as_str().into());
-    gen_c_header(&cargo_manifest_dir[..])
+    gen_c_header(&cargo_manifest_dir[..]);
 }
 #[cfg(any(feature = "nodejs", feature = "nw"))]
 fn link_node_nw(mut cargo_manifest_dir: PathBuf){

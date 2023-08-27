@@ -7,6 +7,7 @@ const GIT_TAG: &str = env!("GIT_TAG", r#"程序版本信息环境变量"GIT_TAG"
 const GIT_LATEST_COMMIT_ID: &str = env!("GIT_LATEST_COMMIT_ID", r#"程序版本信息环境变量"GIT_LATEST_COMMIT_ID"没有被找到"#);
 const CARGO_PKG_VERSION: &str = env!("CARGO_PKG_VERSION", r#"程序版本信息环境变量"CARGO_PKG_VERSION"没有被找到"#);
 const CARGO_PKG_NAME: &str = env!("CARGO_PKG_NAME", r#"程序版本信息环境变量"CARGO_PKG_NAME"没有被找到"#);
+const DISTRIBUTION_DATE_TIME: &str = env!("DISTRIBUTION_DATE_TIME", r#"程序版本信息环境变量"DISTRIBUTION_DATE_TIME"没有被找到"#);
 
 #[repr(C)]
 pub struct GitEdition {
@@ -14,7 +15,8 @@ pub struct GitEdition {
     tag: *const c_char,
     latest_commit_id: *const c_char,
     pkg_name: *const c_char,
-    pkg_version: *const c_char
+    pkg_version: *const c_char,
+    bundle_time: *const c_char
 }
 #[cfg(any(feature = "nodejs", feature = "nw"))]
 impl TryIntoJs for GitEdition {
@@ -31,6 +33,7 @@ impl TryIntoJs for GitEdition {
         set_str_prop!(GIT_LATEST_COMMIT_ID, "latestCommitId");
         set_str_prop!(CARGO_PKG_NAME, "pkgName");
         set_str_prop!(CARGO_PKG_VERSION, "pkgVersion");
+        set_str_prop!(DISTRIBUTION_DATE_TIME, "bundleDateTime");
         json.try_to_js(js_env)
     }
 }
@@ -41,7 +44,8 @@ impl Default for GitEdition {
             tag: CString::new(GIT_TAG).unwrap().into_raw(),
             latest_commit_id: CString::new(GIT_LATEST_COMMIT_ID).unwrap().into_raw(),
             pkg_name: CString::new(CARGO_PKG_NAME).unwrap().into_raw(),
-            pkg_version: CString::new(CARGO_PKG_VERSION).unwrap().into_raw()
+            pkg_version: CString::new(CARGO_PKG_VERSION).unwrap().into_raw(),
+            bundle_time: CString::new(DISTRIBUTION_DATE_TIME).unwrap().into_raw(),
         }
     }
 }
@@ -54,6 +58,7 @@ impl Display for GitEdition {
             |发包标签         | {GIT_TAG}
             |代码分支名       | {GIT_BRANCH}
             |最后提交记录编号 | {GIT_LATEST_COMMIT_ID}
+            |打包时间         | {DISTRIBUTION_DATE_TIME}
             |----------------------------------
         "#)
     }

@@ -48,6 +48,7 @@ struct GitEdition {
   const char *latest_commit_id;
   const char *pkg_name;
   const char *pkg_version;
+  const char *bundle_time;
 };
 extern "C" {
     /// 结束闪烁，但窗口任务栏还会继续高亮，直到窗体获得用户操作的焦点
@@ -90,6 +91,7 @@ export interface GitEdition {
     latestCommitId: string;
     pkgName: string;
     pkgVersion: string;
+    bundleDateTime: string;
 }
 export interface Logger {
     (text: string): void;
