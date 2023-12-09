@@ -1,14 +1,14 @@
-use ::node_bindgen::{core::{napi_call_result, JSValue, NjError, TryIntoJs, val::JsEnv}, sys::{napi_async_context, napi_env, napi_ref, napi_status, napi_value, napi_valuetype_napi_function}};
+use ::node_bindgen::{core::{napi_call_result, JSValue, NjError, TryIntoJs, val::JsEnv}, sys::{napi_make_callback, napi_ref, napi_value, napi_valuetype_napi_function}};
 use ::std::ptr;
 
 #[derive(Clone)]
-pub struct JsCallbackFunction {
+pub struct JsGlobalCallbackFunction {
     js_func: napi_ref,
     env: JsEnv,
 }
-unsafe impl Send for JsCallbackFunction {}
-unsafe impl Sync for JsCallbackFunction {}
-impl JSValue<'_> for JsCallbackFunction {
+unsafe impl Send for JsGlobalCallbackFunction {}
+unsafe impl Sync for JsGlobalCallbackFunction {}
+impl JSValue<'_> for JsGlobalCallbackFunction {
     fn label() -> &'static str {
         "ref_callback"
     }
@@ -21,14 +21,14 @@ impl JSValue<'_> for JsCallbackFunction {
         })
     }
 }
-impl Drop for JsCallbackFunction {
+impl Drop for JsGlobalCallbackFunction {
     fn drop(&mut self) {
         #[cfg(debug_assertions)]
-        let _ = self.call(vec!["[JsCallbackFunction] 释放 logging 回调函数的全局引用".to_string()]);
+        let _ = self.call(vec!["[JsGlobalCallbackFunction] 释放 logging 回调函数的全局引用".to_string()]);
         self.env.delete_reference(self.js_func).unwrap();
     }
 }
-impl JsCallbackFunction {
+impl JsGlobalCallbackFunction {
     pub fn call<T>(&self, rust_argv: Vec<T>) -> Result<napi_value, NjError>
     where T: TryIntoJs {
         let env = &self.env;
@@ -40,17 +40,6 @@ impl JsCallbackFunction {
             }
         }
         let js_value = self.env.get_reference_value(self.js_func)?;
-        extern "C" {
-            pub fn napi_make_callback(
-                env: napi_env,
-                async_context: napi_async_context,
-                recv: napi_value,
-                func: napi_value,
-                argc: usize,
-                argv: *const napi_value,
-                result: *mut napi_value,
-            ) -> napi_status;
-        }
         let mut result = ptr::null_mut();
         let ctx = self.env.get_global()?;
         napi_call_result!(napi_make_callback(
