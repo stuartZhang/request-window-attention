@@ -9,10 +9,13 @@ const attention = require('./dist/nodejs/win-x64/request-window-attention.node')
     attention.startFlashByTitleJs('有道云笔记', 10, 500);
     await new Promise(resolve => setTimeout(resolve, 500));
     attention.stopFlashByTitleJs('有道云笔记');
-    await new Promise(resolve => setTimeout(resolve, 500));
-    attention.startFlashByPpidJs(18928, 10, 500);
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    attention.stopFlashByPpidJs(18928);
-    //
-    attention.unsetLogger();
+    setTimeout(() => {
+        attention.startFlashByPpidJs(18928, 10, 500);
+        setTimeout(() => {
+            attention.stopFlashByPpidJs(18928);
+            setTimeout(() => {
+                attention.unsetLogger();
+            }, 500);
+        }, 1000);
+    }, 500);
 })();

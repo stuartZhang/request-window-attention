@@ -1,4 +1,4 @@
-use ::node_bindgen::{core::{napi_call_result, JSValue, NjError, TryIntoJs, val::JsEnv}, sys::{napi_make_callback, napi_ref, napi_value, napi_valuetype_napi_function}};
+use ::node_bindgen::{core::{napi_call_result, JSValue, NjError, TryIntoJs, val::JsEnv}, sys::{napi_call_function, napi_ref, napi_value, napi_valuetype_napi_function}};
 use ::std::ptr;
 
 #[derive(Clone)]
@@ -42,9 +42,8 @@ impl JsGlobalCallbackFunction {
         let js_value = self.env.get_reference_value(self.js_func)?;
         let mut result = ptr::null_mut();
         let ctx = self.env.get_global()?;
-        napi_call_result!(napi_make_callback(
+        napi_call_result!(napi_call_function(
             self.env.inner(),
-            ptr::null_mut(),
             ctx,
             js_value,
             argv.len(),

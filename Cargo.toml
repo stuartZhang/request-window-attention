@@ -1,6 +1,6 @@
 [package]
 name = "request-window-attention"
-version = "0.1.5"
+version = "0.1.6"
 edition = "2021"
 license = "MIT"
 description = "在 windows 系统，根据窗体“标题名”闪烁窗体的任务栏图标来请求用户注意"
