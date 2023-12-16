@@ -1,4 +1,4 @@
-use ::node_bindgen::{core::{napi_call_result, JSValue, NjError, TryIntoJs, val::JsEnv}, sys::{napi_call_function, napi_ref, napi_value, napi_valuetype_napi_function}};
+use ::node_bindgen::{core::{napi_call_result, JSValue, NjError, TryIntoJs, val::JsEnv}, sys::{napi_call_function, napi_reference_unref, napi_ref, napi_value, napi_valuetype_napi_function}};
 use ::std::ptr;
 
 #[derive(Clone)]
@@ -23,9 +23,20 @@ impl JSValue<'_> for JsGlobalCallbackFunction {
 }
 impl Drop for JsGlobalCallbackFunction {
     fn drop(&mut self) {
+        let result = Box::into_raw(Box::new(u32::MAX));
+        napi_call_result!(napi_reference_unref(
+            self.env.inner(),
+            self.js_func,
+            result
+        )).unwrap();
+        let result = unsafe { Box::from_raw(result) };
         #[cfg(debug_assertions)]
-        let _ = self.call(vec!["[JsGlobalCallbackFunction] 释放 logging 回调函数的全局引用".to_string()]);
-        self.env.delete_reference(self.js_func).unwrap();
+        let _ = self.call(vec![format!("[JsGlobalCallbackFunction] 引用计数的个数为 {}", result)]);
+        if *result == 0 {
+            self.env.delete_reference(self.js_func).unwrap();
+            #[cfg(debug_assertions)]
+            let _ = self.call(vec!["[JsGlobalCallbackFunction] 释放 logging 回调函数的全局引用".to_string()]);
+        }
     }
 }
 impl JsGlobalCallbackFunction {
